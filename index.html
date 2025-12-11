@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Game Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            padding: 30px 40px;
+            z-index: 1000;
+            display: flex;
+            gap: 25px;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-icon svg {
+            width: 22px;
+            height: 22px;
+            fill: #fff;
+            transition: fill 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background: #00ff88;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0, 255, 136, 0.4);
+        }
+
+        .social-icon:hover svg {
+            fill: #000;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 120px 20px 60px;
+            background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);
+            border-radius: 20px;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.5em;
+            color: #999;
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .tagline {
+            color: #888;
+            font-size: 1.1em;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Education & Experience Başlıkları */
+        .section-group {
+            margin-bottom: 60px;
+        }
+
+        .section-header-container {
+            display: flex;
+            gap: 60px;
+            margin-bottom: 15px; 
+        }
+
+        .section-header {
+            flex: 1; 
+            color: #ffffff;
+            font-size: 2.2em;
+            font-weight: 600;
+            padding: 0 10px; 
+        }
+        
+        /* Education & Experience Blokları */
+        .side-by-side-container {
+            display: flex;
+            gap: 60px; 
+        }
+        
+        .section {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            
+            flex: 1; 
+            min-height: 100px; 
+            display: flex; 
+            flex-direction: column;
+        }
+        
+        .education-item {
+            margin-bottom: 10px;
+        }
+
+        .education-title {
+            color: #fff;
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .education-subtitle {
+            color: #888;
+            font-size: 1em;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 10px; /* Ekstra blok için boşluk */
+        }
+
+        .skill-tag {
+            background: rgba(255, 255, 255, 0.05);
+            color: #ccc;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.9em; 
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* YENİ: Ek Deneyim Bloğu Stili */
+        .experience-detail-block {
+            background: #2a2a2a;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            color: #ccc;
+            font-size: 0.95em;
+            line-height: 1.5;
+            border-left: 5px solid #00ff88;
+        }
+
+        .experience-detail-block strong {
+            color: #00ff88;
+            font-weight: 600;
+        }
+        /* BİTİŞ: Ek Deneyim Bloğu Stili */
+
+        /* PROJECTS */
+        .projects-section h2 {
+            color: #ffffff;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 50px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); 
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .project-card {
+            background: #1a1a1a;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .project-video {
+            width: 100%;
+            height: 250px;
+            background: #000;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Video/Placeholder Stil */
+        .project-video video, .project-video-placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .project-video-placeholder {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            color: #00ff88;
+            font-size: 3em;
+        }
+
+        /* Coming Soon Proje Stili */
+        .coming-soon-placeholder {
+             background: #333;
+             color: #fff;
+             font-size: 2.5em;
+             font-weight: 700;
+             letter-spacing: 3px;
+        }
+
+        /* Video Bilgi Şeridi (Overlay) */
+        .project-info-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            color: #e0e0e0;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            font-size: 0.9em;
+            backdrop-filter: blur(2px);
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .info-icon {
+            font-size: 1.2em;
+        }
+        /* Video Bilgi Şeridi Bitiş */
+
+
+        .project-content {
+            padding: 30px;
+        }
+
+        .project-title {
+            font-size: 1.6em;
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .project-description {
+            color: #888;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        /* YENİ: Proje Bağlantıları Düzeni */
+        .project-links {
+            display: flex;
+            justify-content: space-between; /* Bağlantıları sağa ve sola yasla */
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .project-link {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 500;
+        }
+
+        .project-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateX(5px);
+        }
+        
+        /* YENİ: More... butonu için özel stil */
+        .project-link.more-button {
+            background: #00ff88; /* Canlı yeşil renk */
+            color: #000;
+            border: 1px solid #00ff88;
+            font-weight: 700;
+            transform: none;
+        }
+
+        .project-link.more-button:hover {
+            background: #00e077;
+            color: #000;
+            transform: none; /* Hafif oynama olmasın */
+            box-shadow: 0 3px 15px rgba(0, 255, 136, 0.3);
+        }
+        /* BİTİŞ: Proje Bağlantıları Düzeni */
+
+
+        /* ABOUT ME (Footer) STİL GÜNCELLEMELERİ */
+        .about-section-wrapper {
+            background: #a8d5e2;
+            margin: 0;
+            padding: 60px 20px 40px;
+            margin-top: 60px;
+            color: #1a1a1a;
+        }
+
+        footer {
+            text-align: left;
+            padding: 0;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        footer h3 {
+            color: #1a1a1a;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        footer p {
+            color: #2a2a2a;
+            font-size: 1.05em; 
+            line-height: 1.8; 
+            margin-bottom: 20px; 
+        }
+
+        footer strong {
+            color: #1a1a1a;
+            font-weight: 700;
+        }
+        /* BİTİŞ: ABOUT ME (Footer) STİL GÜNCELLEMELERİ */
+        
+        
+        /* YENİ: MODAL (Büyük Proje Görüntüleme) */
+        .modal {
+            display: none; /* Başlangıçta gizli */
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9); /* Yarı saydam arka plan */
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #0a0a0a;
+            margin: 5% auto; /* Ortalamak için */
+            padding: 40px;
+            border: 2px solid #00ff88;
+            width: 90%;
+            max-width: 1000px;
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .modal-close {
+            color: #fff;
+            float: right;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            text-decoration: none;
+            position: absolute;
+            top: 10px;
+            right: 25px;
+        }
+
+        .modal-close:hover,
+        .modal-close:focus {
+            color: #00ff88;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-video {
+            width: 100%;
+            height: 500px; /* Modal içindeki video yüksekliği */
+            background: #000;
+            margin-bottom: 20px;
+        }
+        
+        .modal-video video, .modal-video-placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #1a1a1a;
+            color: #00ff88;
+            font-size: 4em;
+        }
+
+        .modal-title {
+            font-size: 2.5em;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .modal-description {
+            color: #ccc;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+
+        .modal-details {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .modal-details .info-item {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .modal-details .info-icon {
+            color: #00ff88;
+        }
+        
+        .modal-details .info-text {
+            font-size: 1.1em;
+        }
+        /* BİTİŞ: MODAL */
+
+        @media (max-width: 1024px) {
+            /* Responsive düzenlemeler */
+            .projects-grid {
+                 grid-template-columns: 1fr; /* Mobilde alt alta */
+            }
+            .section-header-container,
+            .side-by-side-container {
+                flex-direction: column;
+                gap: 20px; 
+            }
+            .section-group {
+                margin-bottom: 40px;
+            }
+            .section-header {
+                padding: 0;
+            }
+            .section {
+                 min-height: auto; 
+            }
+        }
+
+        @media (max-width: 768px) {
+            .modal-video {
+                height: 250px;
+            }
+            .modal-details {
+                flex-direction: column;
+                gap: 15px;
+            }
+             footer h3 {
+                font-size: 2em;
+            }
+             footer p {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="https://www.linkedin.com/in/talha-aslan-19b758242/" class="social-icon" target="_blank" title="LinkedIn">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+        </a>
+        <a href="mailto:aslantalha190@gmail.com" class="social-icon" title="E-posta">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
+        </a>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1>Talha Aslan</h1>
+            <div class="subtitle">GAMEPLAY PROGRAMMER</div>
+            <p class="tagline">Gameplay developer specializing in system architecture and data-driven design, focused on writing clean, scalable code and continuously expanding my skills in both Unity and Unreal Engine.</p>
+        </header>
+
+        <section class="projects-section">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                
+                <div class="project-card">
+                    <div class="project-video">
+                        <video autoplay muted loop playsinline poster="videos/poster_resmi.jpg">
+                            <source src="videos/NoNameBattleRoyale_1.mp4" type="video/mp4">
+                            Tarayıcınız video etiketini desteklemiyor.
+                        </video>
+                        
+                        <div class="project-info-overlay">
+                            <div class="info-item">
+                                <span class="info-icon">⚙️</span>
+                                <span class="info-text">Unity</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-icon">👥</span>
+                                <span class="info-text">1</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-icon">⏱️</span>
+                                <span class="info-text">12 Week</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">No Name Battle Royale</h3>
+                        <p class="project-description">In this project, I developed almost all the systems of a classic 3D battle royale game.</p>
+                        <div class="project-links">
+                            <a href="#modal-project-1" class="project-link more-button" onclick="document.getElementById('modal-project-1').style.display='block'">More...</a>
+                            <a href="https://thasln.itch.io/no-name-battle-royale" class="project-link">Play on Itch.io →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-video">
+                        <div class="project-video-placeholder coming-soon-placeholder">
+                            <span class="coming-soon-text">COMING SOON</span>
+                        </div>
+                        
+                        <div class="project-info-overlay">
+                            <div class="info-item">
+                                <span class="info-icon">⚙️</span>
+                                <span class="info-text">Unreal</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-icon">👥</span>
+                                <span class="info-text">2</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-icon">⏱️</span>
+                                <span class="info-text">still in development</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">XXX XXX</h3>
+                        <p class="project-description">
+                            xxxxxxx xxxxx xxx xxxxx xxxxx xxxx xxxxxxxx
+                        </p>
+                        <div class="project-links">
+                            <a href="#modal-project-2" class="project-link more-button" style="opacity: 0.5; pointer-events: none;">More...</a>
+                            <a href="#" class="project-link" style="opacity: 0.5; pointer-events: none;">The project is in progress...</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        
+        <div class="section-group">
+            
+            <div class="section-header-container">
+                <h2 class="section-header">Education</h2>
+                <h2 class="section-header">Technical Experience</h2> 
+            </div>
+
+            <div class="side-by-side-container">
+                <section class="section">
+                    <div class="education-item">
+                        <div class="education-title">Necmettin Erbakan University</div>
+                        <div class="education-subtitle">Computer Engineering, **GPA: 3.28**</div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <div class="skills">
+                        <span class="skill-tag">Unity</span>
+                        <span class="skill-tag">C#</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">Unreal Engine</span>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <div class="about-section-wrapper">
+        <footer>
+            <h3>About Me</h3>
+            <p>
+                Hi, I'm <strong>Talha Aslan</strong>,
+            </p>
+            <p>
+                I'm a <strong>23-year-old developer</strong>. While I gained valuable experience during my <strong>nine-month internship in mobile development</strong> at Konya Metropolitan Municipality, I realized that <strong>my true passion and strength lie in Game Development</strong>, where I feel most creative and driven.
+            </p>
+            <p>
+                I consider myself a <strong>curious developer</strong> who enjoys refining my abilities through constant practice. Building <strong>gameplay experiences that feel smooth and intuitive</strong> is my priority, and I focus on writing <strong>clean, understandable, and maintainable code</strong> to achieve that. <strong>Challenging problems motivate me</strong>, and I always push myself until I find the right solution.
+            </p>
+        </footer>
+    </div>
+
+    <div id="modal-project-1" class="modal">
+        <div class="modal-content">
+            <a href="#" class="modal-close" onclick="document.getElementById('modal-project-1').style.display='none'">&times;</a>
+            <div class="modal-video">
+                <video autoplay muted loop playsinline poster="videos/poster_resmi.jpg">
+                    <source src="videos/NoNameBattleRoyale_1.mp4" type="video/mp4">
+                    Tarayıcınız video etiketini desteklemiyor.
+                </video>
+            </div>
+            <h3 class="modal-title">No Name Battle Royale</h3>
+            <p class="modal-description">
+               In this project, I developed nearly all systems of a classic 3D battle royale game using a modular, event-driven architecture. Core gameplay features include player movement, inventory and equipment management, weapon mechanics, and animation using Unity's Animation Rigging package. I also implemented safe zone logic, dynamic loot spawning, and network synchronization using Pun2 for multiplayer functionality.
+
+The project was structured with clear separation of responsibilities, with each system handling its own logic and communicating through events, making the codebase easier to maintain and extend. Working solo on this project allowed me to gain hands-on experience integrating multiple interconnected systems and refining gameplay mechanics from start to finish.
+            </p>
+            
+            <div class="modal-details">
+                <div class="info-item">
+                    <span class="info-icon">⚙️</span>
+                    <span class="info-text">Engine: Unity</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">👥</span>
+                    <span class="info-text">Team Size: 1</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">⏱️</span>
+                    <span class="info-text">Duration: 12 Week</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">🛠️</span>
+                    <span class="info-text">Key Tech: Unity, C#, Pun2, Animation Rigging Package, Data-Driven Design</span>
+                </div>
+            </div>
+            
+            <a href="https://thasln.itch.io/no-name-battle-royale" class="project-link" target="_blank" style="background: #00ff88; color: #000; font-weight: 700;">Play Game →</a>
+        </div>
+    </div>
+    
+    <script>
+        // Modal kapatma işlevi
+        var modal1 = document.getElementById('modal-project-1');
+        
+        // Modalın dışına tıklayınca kapatma
+        window.onclick = function(event) {
+            if (event.target == modal1) {
+                modal1.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
