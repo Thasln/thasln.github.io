@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Game Developer</title>
+    <title>thasln.github.io</title>
     <style>
         * {
             margin: 0;
@@ -98,7 +98,6 @@
             line-height: 1.6;
         }
 
-        /* Education & Experience Başlıkları */
         .section-group {
             margin-bottom: 60px;
         }
@@ -117,7 +116,6 @@
             padding: 0 10px; 
         }
         
-        /* Education & Experience Blokları */
         .side-by-side-container {
             display: flex;
             gap: 60px; 
@@ -155,7 +153,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
-            margin-bottom: 10px; /* Ekstra blok için boşluk */
+            margin-bottom: 10px;
         }
 
         .skill-tag {
@@ -175,7 +173,6 @@
             transform: translateY(-2px);
         }
 
-        /* YENİ: Ek Deneyim Bloğu Stili */
         .experience-detail-block {
             background: #2a2a2a;
             padding: 15px;
@@ -191,9 +188,7 @@
             color: #00ff88;
             font-weight: 600;
         }
-        /* BİTİŞ: Ek Deneyim Bloğu Stili */
 
-        /* PROJECTS */
         .projects-section h2 {
             color: #ffffff;
             text-align: center;
@@ -230,7 +225,6 @@
             overflow: hidden;
         }
 
-        /* Video/Placeholder Stil */
         .project-video video, .project-video-placeholder {
             width: 100%;
             height: 100%;
@@ -247,7 +241,6 @@
             font-size: 3em;
         }
 
-        /* Coming Soon Proje Stili */
         .coming-soon-placeholder {
              background: #333;
              color: #fff;
@@ -256,7 +249,6 @@
              letter-spacing: 3px;
         }
 
-        /* Video Bilgi Şeridi (Overlay) */
         .project-info-overlay {
             position: absolute;
             bottom: 0;
@@ -281,8 +273,6 @@
         .info-icon {
             font-size: 1.2em;
         }
-        /* Video Bilgi Şeridi Bitiş */
-
 
         .project-content {
             padding: 30px;
@@ -301,10 +291,9 @@
             line-height: 1.6;
         }
         
-        /* YENİ: Proje Bağlantıları Düzeni */
         .project-links {
             display: flex;
-            justify-content: space-between; /* Bağlantıları sağa ve sola yasla */
+            justify-content: space-between; 
             align-items: center;
             margin-top: 10px;
         }
@@ -327,9 +316,8 @@
             transform: translateX(5px);
         }
         
-        /* YENİ: More... butonu için özel stil */
         .project-link.more-button {
-            background: #00ff88; /* Canlı yeşil renk */
+            background: #00ff88;
             color: #000;
             border: 1px solid #00ff88;
             font-weight: 700;
@@ -339,13 +327,10 @@
         .project-link.more-button:hover {
             background: #00e077;
             color: #000;
-            transform: none; /* Hafif oynama olmasın */
+            transform: none;
             box-shadow: 0 3px 15px rgba(0, 255, 136, 0.3);
         }
-        /* BİTİŞ: Proje Bağlantıları Düzeni */
 
-
-        /* ABOUT ME (Footer) STİL GÜNCELLEMELERİ */
         .about-section-wrapper {
             background: #a8d5e2;
             margin: 0;
@@ -381,12 +366,9 @@
             color: #1a1a1a;
             font-weight: 700;
         }
-        /* BİTİŞ: ABOUT ME (Footer) STİL GÜNCELLEMELERİ */
         
-        
-        /* YENİ: MODAL (Büyük Proje Görüntüleme) */
         .modal {
-            display: none; /* Başlangıçta gizli */
+            display: none;
             position: fixed;
             z-index: 2000;
             left: 0;
@@ -394,13 +376,13 @@
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgba(0, 0, 0, 0.9); /* Yarı saydam arka plan */
+            background-color: rgba(0, 0, 0, 0.9);
             padding-top: 60px;
         }
 
         .modal-content {
             background-color: #0a0a0a;
-            margin: 5% auto; /* Ortalamak için */
+            margin: 5% auto;
             padding: 40px;
             border: 2px solid #00ff88;
             width: 90%;
@@ -479,12 +461,10 @@
         .modal-details .info-text {
             font-size: 1.1em;
         }
-        /* BİTİŞ: MODAL */
 
         @media (max-width: 1024px) {
-            /* Responsive düzenlemeler */
             .projects-grid {
-                 grid-template-columns: 1fr; /* Mobilde alt alta */
+                 grid-template-columns: 1fr;
             }
             .section-header-container,
             .side-by-side-container {
@@ -695,10 +675,8 @@ The project was structured with clear separation of responsibilities, with each 
     </div>
     
     <script>
-        // Modal kapatma işlevi
         var modal1 = document.getElementById('modal-project-1');
         
-        // Modalın dışına tıklayınca kapatma
         window.onclick = function(event) {
             if (event.target == modal1) {
                 modal1.style.display = "none";
